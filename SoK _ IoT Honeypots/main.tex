@@ -26,31 +26,17 @@
 %\usepackage{amssymb}  % assumes amsmath package installed
 
 \title{\LARGE \bf
-SoK: IoT Honeypots
+SoK: Honeypot Detection and Classification Techniques
 }
 
-%\author{ \parbox{3 in}{\centering Huibert Kwakernaak*
-%         \thanks{*Use the $\backslash$thanks command to put information here}\\
-%         Faculty of Electrical Engineering, Mathematics and Computer Science\\
-%         University of Twente\\
-%         7500 AE Enschede, The Netherlands\\
-%         {\tt\small h.kwakernaak@autsubmit.com}}
-%         \hspace*{ 0.5 in}
-%         \parbox{3 in}{ \centering Pradeep Misra**
-%         \thanks{**The footnote marks may be inserted manually}\\
-%        Department of Electrical Engineering \\
-%         Wright State University\\
-%         Dayton, OH 45435, USA\\
-%         {\tt\small pmisra@cs.wright.edu}}
-%}
 
-\author{Shreyas Srinivasa$^{1}$ and Emmanouil Vasilomanolakis$^{2}$% <-this % stops a space
+\author{Shreyas Srinivasa$^{1}$, Emmanouil Vasilomanolakis$^{2}$, Jens Myrup Pedersen$^{3}$% <-this % stops a space
 %\thanks{*This work was not supported by any organization}% <-this % stops a space
-\thanks{$^{1}$S. Srinivasa is PhD Fellow at Department of Electronic Systems,
+\thanks{$^{1}$S. Srinivasa - PhD Fellow at Department of Electronic Systems,
         Aalborg University, Copenhagen, Denmark
         {\tt\small shsr@es.aau.dk}}%
-\thanks{$^{2}$E. Vasilomanolakis is Asst. Professor at Department of Electronic         Systems,Aalborg University, Copenhagen, Denmark
-        {\tt\small emv@es.aau.dk}}%
+\thanks{$^{2,3}$E. Vasilomanolakis, J. Pedersen - Asst. Professor at                          Department of Electronic Systems, Aalborg University,                         Copenhagen, Denmark
+        {\tt\small emv@es.aau.dk, jens@es.aau.dk}}%
 }
 
 
@@ -65,16 +51,14 @@ SoK: IoT Honeypots
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-
-This electronic document is a ``live'' template. The various components of your paper [title, text, heads, etc.] are already defined on the style sheet, as illustrated by the portions given in this document.
-
+The current generation of applications require services to be accessible from the internet. Connectivity and accessibility have been the modern day trend in order to achieve an interconnected hub. Internet of Things has given the capability to various applications and devices to be interconnected in various areas like Healthcare, Industrial Control Systems, Supply Chain and others. This also leaves a number of devices and services open to the internet. As the number of connected services and devices increase, it is very important to ensure that the communication and the accessibility is secure against attackers. Honeypots have been a trusted mechanism in detection of attacks. They form a good defensive mechanism to emulate the services and effectively detect attacks. Many honeypot designs have been implemented over the years based on the environments. However, they are vulnerable by design and are implemented using libraries which provide a standard responses to some requests. Many honeypots deployed, are not maintained over the years and their interaction mechanisms are outdated. By constructing crafted attack vectors to these honeypots, and by analysing the response, it is possible to determine if the system is a honeypot. It is very important for honeypots to be as covert as possible to facilitate more attacks. In this paper, we evaluate different mechanisms to detect honeypots based on their implementation techniques, protocols and classify them based on xxx 
 \end{abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{INTRODUCTION}
 
-This template, modified in MS Word 2003 and saved as ``Word 97-2003 \& 6.0/95 -- RTF'' for the PC, provides authors with most of the formatting specifications needed for preparing electronic versions of their papers. All standard paper components have been specified for three reasons: (1) ease of use when formatting individual papers, (2) automatic compliance to electronic requirements that facilitate the concurrent or later production of electronic products, and (3) conformity of style throughout a conference proceedings. Margins, column widths, line spacing, and type styles are built-in; examples of the type styles are provided throughout this document and are identified in italic type, within parentheses, following the example. Some components, such as multi-leveled equations, graphics, and tables are not prescribed, although the various table text styles are provided. The formatter will need to create these components, incorporating the applicable criteria that follow.
+The rise of Internet of Things has led to a connected world of devices and services working together to achieve better accessibility and connectivity in real time. This leads to various services open to the internet thereby creating a huge risk in security of the system. In addition to various security measures adopted by the administrators, Honeypots form a good defensive tool as decoys, to identify vulnerabilities and detect attacks. They act as a proactive approach to identify malicious sources for attacks and also give an understanding of the vulnerable areas of the system. All communication to the honeypot is considered hostile, since legitimate users have no need to access a honeypot. The use of honeypots as a detection tools date back to over a decade with projects being open and deployed since 2000. Protocols like Telnet and SSH have been widely used even today to establish communication with remote systems. Similarly protocols like HTTP, FTP, SMTP, SNMP, SMB have been the used as base communication protocols for essential services.  
 
 \section{PROCEDURE FOR PAPER SUBMISSION}
 
