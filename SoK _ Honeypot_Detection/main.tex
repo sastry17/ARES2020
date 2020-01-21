@@ -26,7 +26,7 @@
 %\usepackage{amssymb}  % assumes amsmath package installed
 
 \title{\LARGE \bf
-SoK: Honeypot Detection and Classification Techniques
+SoK: Classifying Honeypot Detection Techniques
 }
 
 
@@ -51,16 +51,19 @@ SoK: Honeypot Detection and Classification Techniques
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-The current generation of applications require services to be accessible from the internet. Connectivity and accessibility have been the modern day trend in order to achieve an interconnected hub. Internet of Things has given the capability to various applications and devices to be interconnected in various areas like Healthcare, Industrial Control Systems, Supply Chain and others. This also leaves a number of devices and services open to the internet. As the number of connected services and devices increase, it is very important to ensure that the communication and the accessibility is secure against attackers. Honeypots have been a trusted mechanism in detection of attacks. They form a good defensive mechanism to emulate the services and effectively detect attacks. Many honeypot designs have been implemented over the years based on the environments. However, they are vulnerable by design and are implemented using libraries which provide a standard responses to some requests. Many honeypots deployed, are not maintained over the years and their interaction mechanisms are outdated. By constructing crafted attack vectors to these honeypots, and by analysing the response, it is possible to determine if the system is a honeypot. It is very important for honeypots to be as covert as possible to facilitate more attacks. In this paper, we evaluate different mechanisms to detect honeypots based on their implementation techniques, protocols and classify them based on xxx 
+In defensive security, Honeypots play an important role to detect attacks by simulating the services of the target system. Over the years, many honeypots have been proposed, developed and deployed over the internet simulating essential protocols and services like HTTP, SSH, telnet, SMB, SMTP, FTP and also industrial protocols like MODBUS, BARCnet. As effective as  honeypots can be leveraged to detect attacks, they are also vulnerable to be exposed as decoys thereby reducing their productivity. The identity of honeypots and its ability to remain undetected is a valuable parameter towards its purpose. According to the survey statistics provided by F-Secure (rfr: F-secure white paper), the attack landscape caought by honeypots hosted by F-Secure have increased over 3 times from 2018 with major targeted protocols being Telnet, SMB, SSH and  MSSQL. The rise in attacks can be in view of increasing IoT smart devices and also the accessibility of Cloud infrastructure. Further, resource constraints on IoT devices lead to 
+poor security diligence to achieve performance and availability. Honeypots have been a reliable choice of network and security administrators for proactive defense on attack detection and analysis. However, it is crucial that honeypots remain undetected. Opensource honeypots like Kippo, Cowrie, Glastopf, Dionaea and Conpot are the most widely deployed Honeypots (rfr: bitter harvest). Unfortunately, studies have shown that administrators fail to change the basic configuration of these honeypots making them insecure and easily detectable. Also, (rfr: bitter harvest) shows that by probing and by carefully analysing the response of these honeypots, their identity can be revealed. This paper provides an overview and a new basis for classification of different honeypot detection mechanisms. 
 \end{abstract}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{INTRODUCTION}
 
-The rise of Internet of Things has led to a connected world of devices and services working together to achieve better accessibility and connectivity in real time. This leads to various services open to the internet thereby creating a huge risk in security of the system. In addition to various security measures adopted by the administrators, Honeypots form a good defensive tool as decoys, to identify vulnerabilities and detect attacks. They act as a proactive approach to identify malicious sources for attacks and also give an understanding of the vulnerable areas of the system. All communication to the honeypot is considered hostile, since legitimate users have no need to access a honeypot. The use of honeypots as a detection tools date back to over a decade with projects being open and deployed since 2000. Protocols like Telnet and SSH have been widely used even today to establish communication with remote systems. Similarly protocols like HTTP, FTP, SMTP, SNMP, SMB have been the used as base communication protocols for essential services.  
+The rise of Internet of Things has led to a connected world of devices and services working together to achieve better accessibility and connectivity in real time. This leads to various services open to the internet thereby creating a huge risk in security of the system. In addition to various security measures adopted by the administrators, Honeypots form a good defensive tool as decoys, to identify vulnerabilities and detect attacks. They act as a proactive approach to identify malicious sources for attacks and also give an understanding of the vulnerable areas of the system. All communication to the honeypot is considered hostile, since legitimate users have no need to access a honeypot. The use of honeypots as a detection tools date back to over a decade with projects being open and deployed since 2000. Protocols like Telnet and SSH have been widely used even today to establish communication with remote systems. Similarly protocols like HTTP, FTP, SMTP, SNMP, SMB have been the used as base communication protocols for essential services. There are popular honeypots designed to emulate these protocols and have been deployed across in various open environments. These include Kippo, Dionaea, HoneyTrap, Glastopf and Conpot. There has also been research in the area of detection of these honeypots using techniques based on signatures and probes.
 
-\section{PROCEDURE FOR PAPER SUBMISSION}
+Early works include detection by 
+
+\section{SECTION II}
 
 \subsection{Selecting a Template (Heading 2)}
 
@@ -70,7 +73,7 @@ First, confirm that you have the correct template for your paper size. This temp
 
 The template is used to format your paper and style the text. All margins, column widths, line spaces, and text fonts are prescribed; please do not alter them. You may note peculiarities. For example, the head margin in this template measures proportionately more than is customary. This measurement and others are deliberate, using specifications that anticipate your paper as one part of the entire proceedings, and not as an independent document. Please do not revise any of the current designations
 
-\section{MATH}
+\section{SECTION III}
 
 Before you begin to format your paper, first write and save the content as a separate text file. Keep your text and graphic files separate until after the text has been formatted and styled. Do not use hard tabs, and limit use of hard returns to only one return at the end of a paragraph. Do not add any kind of pagination anywhere in the paper. Do not number text heads-the template will do that for you.
 
