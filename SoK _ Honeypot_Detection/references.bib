@@ -1,0 +1,125 @@
+@InProceedings{Brumley,
+author="Song, Dawn
+and Brumley, David
+and Yin, Heng
+and Caballero, Juan
+and Jager, Ivan
+and Kang, Min Gyung
+and Liang, Zhenkai
+and Newsome, James
+and Poosankam, Pongsin
+and Saxena, Prateek",
+editor="Sekar, R.
+and Pujari, Arun K.",
+title="BitBlaze: A New Approach to Computer Security via Binary Analysis",
+booktitle="Information Systems Security",
+year="2008",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="1--25",
+abstract="In this paper, we give an overview of the BitBlaze project, a new approach to computer security via binary analysis. In particular, BitBlaze focuses on building a unified binary analysis platform and using it to provide novel solutions to a broad spectrum of different security problems. The binary analysis platform is designed to enable accurate analysis, provide an extensible architecture, and combines static and dynamic analysis as well as program verification techniques to satisfy the common needs of security applications. By extracting security-related properties from binary programs directly, BitBlaze enables a principled, root-cause based approach to computer security, offering novel and effective solutions, as demonstrated with over a dozen different security applications.",
+isbn="978-3-540-89862-7"
+}
+
+
+@techreport{Vetterl2018,
+abstract = {The current generation of low- and medium interaction honeypots uses off-the-shelf libraries to provide the transport layer. We show that this architecture is fatally flawed because the protocols are implemented subtly differently from the systems being impersonated. We present a generic technique for systematically fingerprinting low- and medium interaction honeypots at Internet scale with just one packet and an ERR (Equal Error Rate) of 0.0183. We conduct Internet-wide scans and identify 7 605 honeypot instances across nine different honeypot implementations for the most important network protocols SSH, Telnet, and HTTP. For SSH honeypots we also determined their patch level and find that they are poorly maintained – 27{\%} of the honeypots have not been updated within the last 31 months and only 39{\%} incorporate improvements from 7 months ago. We believe our findings to be a ‘class break' in that trivial patches cannot address the issue.},
+annote = {Paper given: 06-01-2020 Paper read: 07-01-2020
+TBD: 10-01-2020
+
+The paper provides approaches to identify and finger popular Honeypots using probles that target SSH, HHTP and Telnet protocols. The probes are implemented to send custom commands and the responses to the commands are analyzed to determine if the system targeted is a honeypot. The system responses were categprized based on the response types observed from popular honeypots for specific protocols. For SSH- Kippo and Cowrie, for TELNET-Cowrie and HTTP-Glastopf were considred.
+
+The probe requests are first identified based on the specific commands and are parsed for each protocol to identofy unique and deviated behavior from the actual implementation. This helps in faster classification of the systems based on the response received.
+
+The authors also provide the probe commands used to target the systems. The initial IPV4 address space is scanned for open 80, 22 and 23 ports. 
+
+The accuracy is determined by cosine similarity coefficient. the coefficient is equal to 0 if the response from the system matches exactly to the original implementation. Any deviation identified from the original, is added as an increment to the cosine coefficient.},
+author = {Vetterl, Alexander and Clayton, Richard},
+institution = {Cambridge University},
+booktitle = {12th USENIX Workshop on Offensive Technologies, WOOT 2018, co-located with USENIX Security 2018},
+title = {{Bitter harvest: Systematically fingerprinting low- and medium-interaction honeypots at internet scale}},
+url = {https://github.com/desaster/kippo},
+year = {2018}
+}
+
+@misc{BLACKHAT,
+title= {Breaking Honeypots for Fun and Profit, 2015},
+author = {Cymmetria Research},
+available= {\url{https://www.blackhat.com/us-15/briefings.html#breaking-honeypots-for-fun- and-profit}}
+}
+
+
+@INPROCEEDINGS{Holz,
+author={T. {Holz} and F. {Raynal}},
+booktitle={Proceedings from the Sixth Annual IEEE SMC Information Assurance Workshop},
+title={Detecting honeypots and other suspicious environments},
+year={2005},
+volume={},
+number={},
+pages={29-36},
+keywords={security of data;pattern recognition;computer networks;honeypot detection;suspicious environments;attack patterns;attacker behavior;electronic decoys;network resources;IT security;electronic baits;vulnerability assessment;computer networks;malicious attackers;security tools;virtual machines;debuggers;Computer networks;Switches;Computer security;Laboratories;Intrusion detection;Steganography;Virtual machining;Internet;Software systems;Forensics},
+doi={10.1109/IAW.2005.1495930},
+ISSN={null},
+month={June},}
+
+@INPROCEEDINGS{Fu,
+author={X. {Fu} and W. {Yu} and D. {Cheng} and X. {Tan} and K. {Streff} and S. {Graham}},
+booktitle={2006 2nd IEEE International Symposium on Dependable, Autonomic and Secure Computing},
+title={On Recognizing Virtual Honeypots and Countermeasures},
+year={2006},
+volume={},
+number={},
+pages={211-218},
+keywords={security of data;virtual honeypots;attacker behavior analysis;Honeyd;fingerprint attack;Neyman-Pearson decision theory;Operating systems;Delay;Fingerprint recognition;Intrusion detection;Computer networks;Decision theory;Counting circuits;IP networks;Law;Legal factors},
+doi={10.1109/DASC.2006.36},
+ISSN={null},
+month={Sep.},}
+
+@inproceedings{Feng2016,
+abstract = {Industrial control system (ICS) devices with IP addresses are accessible on the Internet and play a crucial role for critical infrastructures like power grid. However, there is a lack of deep understanding of these devices' characteristics in the cyberspace. In this paper, we take a first step in this direction by investigating these accessible industrial devices on the Internet. Because of critical nature of industrial control systems, the detection of online ICS devices should be done in a real-time and non-intrusive manner. Thus, we first analyze 17 industrial protocols widely used in industrial control systems, and train a probability model through the learning algorithm to improve detection accuracy. Then, we discover online ICS devices in the IPv4 space while reducing the noise of industrial honeypots. To observe the dynamics of ICS devices in a relatively long run, we have deployed our discovery system on Amazon EC2 and detected online ICS devices in the whole IPv4 space for eight times from August 2015 to March 2016. Based on the ICS device data collection, we conduct a comprehensive data analysis to characterize the usage of ICS devices, especially in the answer to the following three questions: (1) what are the distribution features of ICS devices, (2) who use these ICS devices, and (3) what are the functions of these ICS devices.},
+author = {Feng, Xuan and Li, Qiang and Wang, Haining and Sun, Limin},
+booktitle = {Proceedings - International Conference on Network Protocols, ICNP},
+doi = {10.1109/ICNP.2016.7784407},
+file = {:C$\backslash$:/Users/JG07DA/AppData/Local/Mendeley Ltd./Mendeley Desktop/Downloaded/Feng et al. - 2016 - Characterizing industrial control system devices on the Internet.pdf:pdf},
+isbn = {9781509032815},
+issn = {10921648},
+month = {dec},
+publisher = {IEEE Computer Society},
+title = {{Characterizing industrial control system devices on the Internet}},
+volume = {2016-Decem},
+year = {2016}
+}
+
+@misc{SHODAN,
+title= {Honeypot or Not?},
+author = {SHODAN},
+available= {\url{https://honeyscore.shodan.io/}}
+}
+
+@misc{Honeynet,
+title= {The Honeynet Project},
+author = {The Honeynet Project},
+available= {\url{https://www.honeynet.org/}}
+}
+
+@misc{NMap,
+title= {Network Mapper},
+author = {Gordon Lyon},
+available= {\url{https://nmap.org/}}
+}
+
+
+@misc{TPot,
+title= {T-Pot: A Multi-Honeypot Platform},
+author = {Deutsche Telekom AG Honeypot Project},
+available= {\url{https://dtag-dev-sec.github.io/mediator/feature/2015/03/17/concept.html}}
+}
+
+@inproceedings{shu2006network,
+  title={Network protocol system fingerprinting-a formal approach},
+  author={Shu, Guoqiang and Lee, David},
+  booktitle={Proceedings IEEE INFOCOM 2006. 25TH IEEE International Conference on Computer Communications},
+  pages={1--12},
+  year={2006},
+  organization={IEEE}
+}
