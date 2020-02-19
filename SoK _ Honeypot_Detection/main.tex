@@ -17,6 +17,8 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{float}
+\usepackage{pgfplots}
+\pgfplotsset{width=8cm,compat=1.9}
 
 % The following packages can be found on http:\\www.ctan.org
 %\usepackage{graphics} % for pdf, bitmapped graphics files
@@ -30,7 +32,7 @@
 SoK: Classifying Honeypot Fingerprinting Techniques
 }
 
-%%%% ForDouble Blind Version
+%%%% For Double Blind Version
 %\author{Shreyas Srinivasa$^{1}$, Emmanouil Vasilomanolakis$^{2}$, Jens Myrup Pedersen$^{3}$% <-this % stops a space
 %\thanks{*This work was not supported by any organization}% <-this % stops a space
 %\thanks{$^{1}$S. Srinivasa - PhD Fellow at Department of Electronic Systems,
@@ -52,7 +54,7 @@ SoK: Classifying Honeypot Fingerprinting Techniques
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{abstract}
-In defensive security, Honeypots play an important role to detect attacks by simulating the services of the target system. Over the years, many honeypots have been proposed, developed and deployed over the internet simulating essential protocols and services like HTTP, SSH, Telnet, SMB, SMTP, FTP and also industrial protocols like MODBUS and BARCnet. Survey statistics provided by F-Secure (rfr: F-secure white paper), show that the attack landscape caught by honeypots hosted by F-Secure, have tripled from 2018 with major targeted protocols being Telnet, SMB, SSH and  MSSQL. The rise in attacks can be in view of increase in smart IoT devices and also the accessibility of Cloud infrastructure. Further, resource constraints on IoT devices lead to poor security diligence to achieve performance and availability. Honeypots have been a reliable choice for proactive defense by  network administrators to detect and analyze attacks. Open-source low-interaction honeypots like Kippo, Cowrie, Glastopf, Dionaea and Conpot are the most widely deployed Honeypots (rfr: bitter harvest). As effective as  honeypots can be leveraged to detect attacks, they are also vulnerable to be exposed as decoys thereby reducing their productivity. The identity of honeypots and its ability to remain undetected is a valuable parameter towards its purpose. Studies have shown that these honeypots are easily detectable and can be fingerprint by various mechanisms. Probing, response analysis and  location/domain filtering are some methods through which the identity of honeypots can be revealed. In addition, machine learning based methods have inferred to increase the predictability and reduce false positives in detection. This paper provides an overview and a new basis for classification of different low interaction honeypot fingerprinting mechanisms . 
+In defensive security, Honeypots play an important role to detect attacks by simulating the services of the target system. Over the years, many honeypots have been proposed, developed and deployed over the internet simulating essential protocols and services like HTTP, SSH, Telnet, SMB, SMTP, FTP and also industrial protocols like MODBUS and BARCnet. Survey statistics provided by F-Secure (rfr: F-secure white paper), show that the attack landscape caught by honeypots hosted by F-Secure, have tripled from 2018 with major targeted protocols being Telnet, SMB, SSH and  MSSQL. The rise in attacks can be in view of increase in smart IoT devices and also the accessibility of Cloud infrastructure. Further, resource constraints on IoT devices lead to poor security diligence to achieve performance and availability. Honeypots have been a reliable choice for proactive defense by  network administrators to detect and analyze attacks. Open-source low-interaction honeypots like Kippo, Cowrie, Glastopf, Dionaea and Conpot are the most widely deployed Honeypots (rfr: bitter harvest). As effective as  honeypots can be leveraged to detect attacks, they are also vulnerable to be exposed as decoys thereby reducing their productivity. The identity of honeypots and its ability to remain undetected is a valuable parameter towards its purpose. Studies have shown that these honeypots are easily detectable and can be fingerprint by various mechanisms. Probing, response analysis and  location/domain filtering are some methods through which the identity of honeypots can be revealed. In addition, machine learning based methods have inferred to increase the predictability and reduce false positives in detection. This paper provides an overview and a new basis for classification of honeypot fingerprinting mechanisms . 
 \end{abstract}
 
 
@@ -71,7 +73,7 @@ Internet wide scanning has now been convenient and popular because of scanning p
  \begin{itemize}
     \item Provide an overview about Honeypot Fingerprinting techniques
     \item Classify the fingerprinting techniques on the basis of minimal and advanced interaction. We also propose the idea of active and passive approaches to fingerprinting honeypots
-    \item We use the classification techniques proposed to evaluate against popular open source honeypots and provide remedies to defend against active and passive approaches 
+    \item We use the classification techniques proposed to evaluate against popular open source honeypots and provide remedies to defend against these approaches 
  \end{itemize}
 
 
@@ -80,10 +82,43 @@ Internet wide scanning has now been convenient and popular because of scanning p
 \section{Background}
 Honeypots are one of the strategies employed in defensive security to detect attacks from adversaries. They are designed and developed with an intention to mimic the real protocols and provide information about the attack to the administrators. Based on the interaction and service emulation, honeypots are classified into low, medium and high interaction honeypots. Security administrators often feel that low interaction honeypots are feasible to be deployed in their environment as they are not resource intensive and are less risky. Low interaction honeypots are limited in protocol emulations and hence are also easy targets for fingerprinting attacks. 
 
-Fingerprinting techniques are used to identify systems by analysis on the behavioral information retrieved by probing.   
-It is normally the first step employed by attackers to gain more insight about the end system before exploiting them. This technique has proved to be effective and there are various fingerprinting tools available that can accurately determine the operating system, kernel versions, protocol versions, device name and other attributes of the end system. However, determining these attribute information may involve multiple scans and intermittent probing. The ideal outcome of device fingerprinting infers the device and its attributes, based on which the attacker can orchestrate exploits. The primary focus of a honeypot lies in its ability to stay undetected. Attackers use fingerprinting as an initial setup to determine the validity of the end device before investing their resources on exploitation. If the identity of honeypot is revealed during the initial fingerprinting techniques, there productivity is degraded. This happens due to two reasons. Firstly, the attacker decides to broadcast his findings about the existence of the honeypot which alerts other attackers when they are looking for targets. Second, there is a derived fingerprinting technique for the target honeypot, which can be included in the primary scan of popular fingerprinting tools. p0f, Nmap, Uniscan, Metasploit, Nikto and cisco-torch are some of the open-source fingerprinting tools which are capable of detecting honeypots like Kippo, Cowrie and Glastopf. Table \ref{tab:Table1} provides a list of protocols and the honeypots available on the internet.   
+Fingerprinting techniques are used to identify systems by analysis on the behavioral information retrieved by probing. It is normally the first step employed by attackers to gain more insight about the end system before exploiting them. This technique has proved to be effective and there are various fingerprinting tools available that can accurately determine the operating system, kernel versions, protocol versions, device name and other attributes of the end system. However, determining these attribute information may involve multiple scans and intermittent probing. The ideal outcome of device fingerprinting infers the device and its attributes, based on which the attacker can orchestrate exploits. The primary focus of a honeypot lies in its ability to stay undetected. Attackers use fingerprinting as an initial setup to determine the validity of the end device before investing their resources on exploitation. If the identity of honeypot is revealed during the initial fingerprinting techniques, there productivity is degraded. This happens due to two reasons. Firstly, the attacker decides to broadcast his findings about the existence of the honeypot which alerts other attackers when they are looking for targets. Second, there is a derived fingerprinting technique for the target honeypot, which can be included in the primary scan of popular fingerprinting tools. p0f, Nmap, Uniscan, Metasploit, Nikto and cisco-torch are some of the open-source fingerprinting tools which are capable of detecting honeypots like Kippo, Cowrie and Glastopf. Table \ref{tab:Table1} provides a list of protocols and the honeypots available on the internet.   
 
-Identifying deviations in the behavior of a system and inferring fingerprints has been an active research topic. Early works by Brumley et al. \cite{Brumley} involved theoretical approach based on binary analysis. All attacks towards honeypots are recorded or logged for further analysis. This process is an expensive operation considering the writes and file operations thereby creating delay in the response times of the honeypot. Further, honeypots utilize the virtual environments to save resources in their environment. Based on these ideas, Holz et al \cite{Holz} proposed that honeypots could be detected due to increase in execution time of the commands from the attackers because of logging and sandboxing.Fu et al. \cite{Fu} also, suggested that the delay in execution and the response due to the virtualized network layer leveraged by honeypots could be a factor to infer the presence of the honeypot. At the Black Hat conference 2015, Cymmetria research \cite{BLACKHAT} proposed various factors by which honeypots could be fingerprinted and recommended new design strategies and development practices to overcome the detection. Alexander et al. \cite{Vetterl2018} provide a systematic fingerprinting approach for low-interaction honeypots. They leverage the faults of poorly maintained libraries referenced in the emulation of protocols in popular honeypots. The libraries used in the development of protocols in honeypots were not intended to reproduce the actual behavior of the protocol itself but used for the ease of development. Th authors present a fingerprinting approach by development of probes that trigger the response at the transport layer and were successful in identifying up to 7605 honeypots online. Their research is limited to SSH, Telnet and HTTP honeypots. Internet scanning tools like Shodan have also released Honeypot identification methods called Honeyscore \cite{SHODAN}.The tool accepts an IP address or a URL as an input and provides result if the end system is a honeypot. The tool is stated to be still in development but is capable of recognizing popular honeypots on the internet. Feng et al. \cite{Feng2016} propose a machine learning model to collect and classify the response data received from Industrial Control Systems open on the internet. The approach relies on the flawed implementation of industrial control protocols and the deployment configurations of the honeypots. 
+    \begin{figure}
+    \begin{center}
+    \begin{tikzpicture}
+    \begin{axis}[
+   %% title={Research on System and Network Fingerprinting},
+    xlabel={Year},
+    ylabel={No. of research publications},
+    xmin=2005, xmax=2020,
+    ymin=0, ymax=8,
+    xtick={2005,2010,2015,2020},
+    ytick={0,1,2,3,4,5,7,8},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+    ]
+
+    \addplot[
+    color=blue,
+    mark=square,
+    ]
+    coordinates {
+    (2005,1)(2006,3)(2007,4)(2008,2)(2009,0)(2010,3)(2011,0)(2012,0)(2013,2)(2014,5)(2015,5)(2016,3)(2017,4)(2018,5)(2019,7)
+    };
+    \legend{Research Publications per year}
+    
+    \end{axis}
+    \end{tikzpicture}
+    \end{center}
+    \label{graph:reseatch_per_year},
+    \caption{Research on System and Network Fingerprinting}
+   \end{figure} 
+    
+
+Identifying deviations in the behavior of a system and inferring fingerprints has been an active research topic. Early works by Brumley et al. \cite{Brumley} involved theoretical approach based on binary analysis. All attacks towards honeypots are recorded or logged for further analysis. This process is an expensive operation considering the writes and file operations thereby creating delay in the response times of the honeypot. Further, honeypots utilize the virtual environments to save resources in their environment. Based on these ideas, Holz et al \cite{Holz} proposed that honeypots could be detected due to increase in execution time of the commands from the attackers because of logging and sandboxing.Fu et al. \cite{Fu} also, suggested that the delay in execution and the response due to the virtualized network layer leveraged by honeypots could be a factor to infer the presence of the honeypot. At the Black Hat conference 2015, Cymmetria research \cite{BLACKHAT} proposed various factors by which honeypots could be fingerprinted and recommended new design strategies and development practices to overcome the detection. Alexander et al. \cite{Vetterl2018} provide a systematic fingerprinting approach for low-interaction honeypots. They leverage the faults of poorly maintained libraries referenced in the emulation of protocols in popular honeypots. The libraries used in the development of protocols in honeypots were not intended to reproduce the actual behavior of the protocol itself but used for the ease of development. The authors present a fingerprinting approach by development of probes that trigger the response at the transport layer and were successful in identifying up to 7605 honeypots online. Their research is limited to SSH, Telnet and HTTP honeypots. Internet scanning tools like Shodan have also released Honeypot identification methods called Honeyscore \cite{SHODAN}.The tool accepts an IP address or a URL as an input and provides result if the end system is a honeypot. The tool is stated to be still in development but is capable of recognizing popular honeypots on the internet. Feng et al. \cite{Feng2016} propose a machine learning model to collect and classify the response data received from Industrial Control Systems open on the internet. The approach relies on the flawed implementation of industrial control protocols and the deployment configurations of the honeypots. Figure \ref{graph:reseatch_per_year} shows the increasing research in the area of system fingerprinting over the years. Over the last five years, there is consistent increase for fingerprinting research techniques. 
+
 
 
 \begin{table*}[ht!]
@@ -138,12 +173,39 @@ Social Engineering is a leading Offensive Security strategy. Most of the finding
 Shodan is a database of vulnerable systems on the internet. It provides search as a service by accepting IP address, hostname or service names as search parameters. The output contains information about the target system and its open services. Shodan also provides a Honeypot Detection service called HoneyScore \cite{SHODAN} in addition to the database of vulnerable systems. Shodan performs daily scans of the internet with probe based fingerprinting methods to identify vulnerable systems on the internet. It has also a major source for attackers to get fast access to vulnerable systems. 
 
 \subsection{Probe based fingerprinting}
-Probe based fingerprinting involves creation of crafted queries to target devices to derive fingerprinting information. The probe based methods engage with  the target system unlike the meta data methods. These methods focus on leveraging the responses from communication protocols and classifying the target machine based on specific values from the responses. Constructing probes is an advanced method that requires proficient knowledge of systems and protocols. Therefore extensive knowledge about systems and protocols is necessary for probe based methods. The queries are constructed to trigger specific information from the target machine. The specific information may include parameters like initial congestion window (ICW) or re-transmission timeouts (RTO) based on the operating system of the target system. 
-Shu et al.\cite{shu2006network} proposed fingerprinting of network protocols with a formal approach. The approach proposes a parameterized extended finite state machine (PEFSM) to formally model protocol specification and candidate conforming implementations. 
+Probe based fingerprinting involves creation of crafted queries to target devices to derive fingerprinting information. The probe based methods engage with  the target system unlike the meta data methods. These methods focus on leveraging the responses from communication protocols and classifying the target machine based on specific values from the responses. Constructing probes is an advanced method that requires proficient knowledge of systems and protocols. Therefore extensive knowledge about systems and protocols is necessary for probe based methods. The queries are constructed to trigger specific information from the target machine. The information may include system specific unique values for parameters like initial congestion window (ICW) or re-transmission timeouts (RTO). 
+Shu et al.\cite{shu2006network} proposed fingerprinting of network protocols with a formal approach. The approach proposes a parameterized extended finite state machine (PEFSM) to formally model protocol specification and candidate conforming implementations. Several fingerprinting tools like NMap, Metasploit and Hydra make use probe based  methods to determine the operating systems and the protocol versions of the target systems. These tools rely on TCP packet information to determine the operating system. The specific values unique to each operating system are logged in  the tools database. This helps in comparison of the value of parameters obtained by probing and determine the operating system by matching the closed parameter value from the database. We discuss different probe based techniques in further subsections. 
 
+\subsubsection{Port Scanning}
+Port scanning is the most employed technique by attackers. It forms the first step before attacking a target system. Port scanning involves scanning and listing open ports on the target system. Ports which are open signify that they are open for communication and the active services on the system. Many administrators leave the services running on default ports and configuration. For example, port 22 is used for SSH and port 80 for HTTP web service. Port scanning provides information about the transport layer protocol used, the port number and the status of the port. Popular port scanning tools like NMap\cite{NMap} provide more information about the open ports like the active service, version and the vulnerabilities associated with the version. Nmap also provides fast scans and detailed scans. It recognises six port states and classifies them into open, closed, filtered, unfiltered, open-filtered and closed-filtered and has a database of fingerprinting information for 2000 services. 
+Tools like NMap and ZenMap provide parametrized scripts to run port scanning on target machines. Further, custom scripts are developed with NMap that can identify honeypots like Kippo and Dionaea.  
+
+\subsubsection{Banner Grabbing}
+Banner grabbing is one of the techniques used in reconnaissance process following a port scan. After learning about the open ports, a connection is established with the remote system to get information about the service and the version number. Some implementations of protocols like FTP and HTTP expose critical system information like service name, software, version and the operating system. Banner grabbing based probes targeted on a protocol can reveal vulnerabilities associated with any critical information obtained. The CVE database \cite{CVE} provides a list of vulnerabilities associated with respect to protocols, software and operating systems. Popular tools for Banner Grabbing are Wget, cURL, NMap, Netcat, Dmitry and ASR. Banner grabbing is an integrated feature with port scanning on most of the port scanning tools.  
+
+
+\subsubsection{Handshake Proposals}
+
+\subsubsection{Default Configuration Check}
+
+\subsubsection{System information}
+
+\subsubsection{Deep Packet Inspection}
+
+\subsubsection{Sniffing}
+
+\subsubsection{Multi-stage attacks}
+
+
+However, there are risks involved in probe based fingerprinting methods. As these methods involve direct interaction with the target system, eventually the probe system is blacklisted. We must remember that there is no real reason for establishing a connection with a honeypot. Any connections observed with a honeypot is considered potentially an attack. Probing systems may get blocked by this approach. This limits in further exploitation or identification of the attacker or the honeypot. It is important to keep the attacker engaged with the honeypot to collect as much possible to identify the attacker. 
+
+
+\subsection{Dependency based fingerprinting}
 
 
 \subsection{Machine Learning based fingerprinting}
+
+
 
 
 
