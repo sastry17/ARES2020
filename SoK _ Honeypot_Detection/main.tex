@@ -105,7 +105,7 @@ Fingerprinting techniques are used to identify systems by analysis on the behavi
     mark=square,
     ]
     coordinates {
-    (2005,1)(2006,3)(2007,4)(2008,2)(2009,0)(2010,3)(2011,0)(2012,0)(2013,2)(2014,5)(2015,5)(2016,3)(2017,4)(2018,5)(2019,7)
+    (2005,1)(2006,3)(2007,5)(2008,2)(2009,0)(2010,3)(2011,0)(2012,0)(2013,2)(2014,5)(2015,5)(2016,4)(2017,4)(2018,5)(2019,7)
     };
     \legend{Research Publications per year}
     
@@ -178,19 +178,23 @@ Shu et al.\cite{shu2006network} proposed fingerprinting of network protocols wit
 
 \subsubsection{Port Scanning}
 Port scanning is the most employed technique by attackers. It forms the first step before attacking a target system. Port scanning involves scanning and listing open ports on the target system. Ports which are open signify that they are open for communication and the active services on the system. Many administrators leave the services running on default ports and configuration. For example, port 22 is used for SSH and port 80 for HTTP web service. Port scanning provides information about the transport layer protocol used, the port number and the status of the port. Popular port scanning tools like NMap\cite{NMap} provide more information about the open ports like the active service, version and the vulnerabilities associated with the version. Nmap also provides fast scans and detailed scans. It recognises six port states and classifies them into open, closed, filtered, unfiltered, open-filtered and closed-filtered and has a database of fingerprinting information for 2000 services. 
-Tools like NMap and ZenMap provide parametrized scripts to run port scanning on target machines. Further, custom scripts are developed with NMap that can identify honeypots like Kippo and Dionaea.  
+Tools like NMap and ZMap \cite{zmap} provide parametrized scripts to run port scanning on target machines. Further, custom scripts are developed with NMap that can identify honeypots like Kippo and Dionaea.  
 
 \subsubsection{Banner Grabbing}
-Banner grabbing is one of the techniques used in reconnaissance process following a port scan. After learning about the open ports, a connection is established with the remote system to get information about the service and the version number. Some implementations of protocols like FTP and HTTP expose critical system information like service name, software, version and the operating system. Banner grabbing based probes targeted on a protocol can reveal vulnerabilities associated with any critical information obtained. The CVE database \cite{CVE} provides a list of vulnerabilities associated with respect to protocols, software and operating systems. Popular tools for Banner Grabbing are Wget, cURL, NMap, Netcat, Dmitry and ASR. Banner grabbing is an integrated feature with port scanning on most of the port scanning tools.  
+Banner grabbing is one of the techniques used in reconnaissance process following a port scan. After learning about the open ports, a connection is established with the remote system to get information about the service and the version number. Some implementations of protocols like FTP and HTTP expose critical system information like service name, software, version and the operating system. Banner grabbing based probes targeted on a protocol can reveal vulnerabilities associated with any critical information obtained. The CVE database \cite{CVE} provides a list of vulnerabilities associated with respect to protocols, software and operating systems. Popular tools for Banner Grabbing are Wget, cURL, NMap, Netcat, and Dmitry. Banner grabbing is an integrated feature with port scanning on most of the port scanning tools.  
 
 
 \subsubsection{Handshake Proposals}
+TLS handshake is a process that establishes the parameters for secure communication between systems. The handshake process involves exchange of messages to acknowledge each other, TLS version,  negotiate the cipher suites, authentication with the public key and session keys generation. In addition there are parameters like message size and timestamp. TLS negotiations are transmitted in clear text. With the information available through this negotiation, it is possible to fingerprint the client and server applications.  The handshakes also determine the cipher suites proposed by the target system. This information can be leveraged to find vulnerabilities and to characterize the systems based on limited choice of ciphers. JA3 and JA3s\cite{JA3} are techniques developed that can actively fingerprint the TLS client and servers based on their hello messages.
+
+\subsubsection{Deep Packet Inspection}
+
 
 \subsubsection{Default Configuration Check}
 
 \subsubsection{System information}
 
-\subsubsection{Deep Packet Inspection}
+
 
 \subsubsection{Sniffing}
 
