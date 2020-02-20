@@ -195,11 +195,10 @@ Applications are setup with setup scripts or by using install media. Often, thes
 \newline
 
 \subsubsection{System information}
-
-
+Systems often reveal or allow to be queried about specific information like the processor family, architecture, network interface and timezone. These specific information help in the inference of a honeypot system. They are useful metadata when combined with data collected from other techniques.  Also, ping response times can be used to detect the operating system of the target system. Early works from Mukkamala et al. \cite{mukkamala} show detection of low-interaction honeypots and virtual environments based on support vector machine models. The approach compares the average the time taken for responses from a virtual machine than that of a real system. The authors determine the existance of a honeypot by testing the limitations of the services emulated by the honeypot, timing analysis of the ICMP echo requests and with TCP/IP fingerprinting with a 49 featured data set.  
 \newline
-
 \subsubsection{Sniffing}
+Network Sniffing is a reconnaissance method used for analysing the network traffic exchanged between two entities. The traffic is monitored to find anomalies. Any deviation from regular behavior, such as redundant network traffic, broadcasts and logging are easy signs of a honeypot. Sniffing techniques work well if the packet sniffing tools are installed within the same network as a honeypot. These techniques are also effective to determine the existence of high-interaction honeypots. However, sniffing methods are ineffective if the attacker is unable to filter packets from the source system. Attackers can still use sniffing techniques if they gain successful access into a vulnerable system. The attackers can install bots to tap the network traffic and have them report to a C&C server. This can expose other systems in the network of the honeypot. 
 
 \newline
 \subsubsection{Multi-stage attacks}
