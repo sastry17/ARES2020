@@ -204,7 +204,6 @@ Multi-stage attacks can be defined as a sequential array of exploits by an attac
 \newline
 
 \begin{table*}[ht!]
-\begin{center}
  \begin{tabular}{|l|l|l|l|l|} 
  \hline
  Honeypot & Protocol & Language & Library & Updated \\ [0.3ex] 
@@ -221,11 +220,10 @@ Multi-stage attacks can be defined as a sequential array of exploits by an attac
  \hline
 \end{tabular}
 \caption{Library references in honeypots}
-\end{center}
 \label{table:2}
 \end{table*}
 
-\subsubsection{Risks}
+\subsubsection{Risks in Probe Based Fingerprinting}
 However, there are risks involved in probe based fingerprinting methods. As these methods involve direct interaction with the target system, eventually the probe system is blacklisted. We must remember that there is no real reason for establishing a connection with a honeypot. Any connections observed with a honeypot is considered potentially an attack. Probing systems may get blocked by this approach. This limits in further exploitation or identification of the attacker or the honeypot. It is important to keep the attacker engaged with the honeypot to collect as much possible to identify the attacker. 
 
 \subsection{Dependency based fingerprinting}
@@ -236,19 +234,19 @@ Honeypots basically simulate network protocols. The simulations are implemented 
 \subsection{Machine Learning based fingerprinting}
 Machine learning techniques are based on the response data received from probe based methods. The collection of response data acts as a learning dataset for designing a model for detection of honeypots. Machine learning model depend on data and modelling algorithms to learn the process of fingerprinting based on previous inference in the data set. Huang et al. \cite{huang} provide a machine learn based model approach to detect honeypots. The approach introduces features from the network layer, application layer and the operating system layer and proposes a detection model to identify honeypots with stated detection rate of 0.03 AUC. Feng et al. \cite{Feng2016} also propose a learning model based on the probe based method for detecting ICS honeypots. The proposed method initially uses reconnaissance to identify systems open to the internet with specific ports open which are related to ICS. Next, they construct probes to collect data for specific banners and handshakes. This information is used to design a learning model to classify real systems and honeypots of ICS devices. Figure ? shows the learning models proposed by these authors. 
 
-Machine Learning based fingerprinting is suitable when there is enough data, algorithm and an applicable learning model. With good learning models and data, it is possible to increase the detection accuracy. This technique is suitable to be applied after successful fingerprinting methods are established for a honeypot through metadata and probe based fingerprinting techniques.  
-
-
-
-
-
+Machine Learning based fingerprinting is suitable when there is enough data, algorithm and an applicable learning model. With good learning models and data, it is possible to increase the detection accuracy. This technique is suitable to be applied after successful fingerprinting methods are established for a honeypot through metadata and probe based fingerprinting techniques. The main drawback of this approach is the freshness of the data. The data on which the models are based need to be constantly changed and tested to ensure that the detection is still accurate. 
 
 
  \section{Classifying Honeypot Fingerprinting Methods}
    
-   Fingerprinting methods are basically classified into active and passive based on interaction with the target system. Active fingerprinting involves creation of specific probes and using them to query the the target system to collect as much data possible. On the contrary, passive fingerprinting  make use of sniffing traffic or basic packet inspection to determine information about the target. Passive fingerprinting limit communication with the target system as much possible. Remote attackers tend to use active fingerprinting methods as passive fingerprinting requires the use of a sniffing tool deployed on the network of the target system. Passive fingerprinting techniques depend on fingerprint databases to infer their findings. Fingerprint databases contain information about distinct responses by systems on interaction. These responses may involve TTL (Time to Live) for specific flags in an ICMP response. Such methods are used to determine the operating system or the versions of the network protocols on the target system.
+   Fingerprinting methods are basically classified into active and passive based on interaction with the target system. Active fingerprinting involves creation of specific probes and using them to query the the target system to collect as much data possible. On the contrary, passive fingerprinting  make use of sniffing traffic or basic packet inspection to determine information about the target. Passive fingerprinting limit communication with the target system as much possible. Remote attackers tend to use active fingerprinting methods as passive fingerprinting requires the use of a sniffing tool deployed on the network of the target system. Passive fingerprinting techniques depend on fingerprint databases to infer their findings. Fingerprint databases contain information about distinct responses by systems on interaction.
    
-   Concentrating fingerprinting methods on honeypots, we propose an approach based on interaction methods. This is important as the many honeypot networks block communication with the attackers after a connection attempt. This limits the detection and further exploitation of the honeypot and the system. Also, we believe to use minimum interaction with the honeypots for fingerprinting, to limit logging information about the attacker. 
+   We classify the methods discussed in sections before into minimal and maximal interaction methods. The classification is based on the communication levels required by the methods to obtain qualified information to fingerprint the target system. Basically, honeypot networks block communication with the attackers after a connection attempt is detected. This limits the detection and further exploitation of the honeypot from a probe network. Also, we believe that minimum interaction methods are effective with honeypots fingerprinting, to limit logging information of the attacker and to avoid being blocked.  
+
+ \subsection{Minimal Interaction Fingerprinting Techniques}
+ 
+ \subsection{Maximal Interaction Fingerprinting Techniques}
+
 
 
  \section{Evaluation of Honeypots based on Classification}
