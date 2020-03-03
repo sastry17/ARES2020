@@ -21,6 +21,7 @@
 \pgfplotsset{width=8cm,compat=1.9}
 \usepackage{caption}
 \usepackage{graphicx}
+\usepackage{ragged2e}
 \graphicspath{ {./Figures/} }
 
 % The following packages can be found on http:\\www.ctan.org
@@ -202,6 +203,27 @@ TLS handshake is a process that establishes the parameters for secure communicat
 \subsubsection{Deep Packet Inspection}
 Deep packet inspection(DPI) is a method for analysing and monitoring network traffic. Using DPI, network packets can be filtered based on the protocol type and the data in packet components. Conventional packet inspection methods examine only the header information for filtering the traffic. DPI is performed at enterprises using layer 6 devices like firewalls or intrusion detection systems. DPI can help to identify redundant responses received from a machine for fingerprinting purposes. DPI relies on a repository of existing protocol fingerprints for classification. It is an effective technique used by intrusion detection systems to filter malicious packets from the production networks. On the contrary, DPI can be an effective technique to fingerprint end systems or protocols based on the header and the payload information. Sang et al.\cite{Sang} proposed a fingerprinting technique based on byte embedding for classification of network protocols. The approach learns the application fingerprints from traffic traces by characterizing the packet payloads with byte embedding based payload alignment algorithm. However, with open-source libraries and tools like nDPI\cite{nDPI} it is possible to fingerprint and inspect various protocols. DPI requires good knowledge of packet level communication and networking. It is an advanced probe based method which requires advanced knowledge for creation of probes to retrieve specific information from the target system. 
 \newline
+
+\begin{table}
+\begin{tabular}{||c c c c c||} 
+ \hline
+ Honeypot & Protocol & Language & Library & Updated \\ [0.5ex] 
+ \hline
+ Kippo  & SSH    & Python &  TwistedConch & May15 \\ 
+ Cowrie & SSH    & Python &  TwistedConch & May18 \\
+ TPwD   & Telnet & C      &  custom       & Feb16 \\
+ MTPoT  & Telnet & Python &  telnetsrv    & Mar17 \\
+ TIoT   & Telnet & Python &  custom       & May17 \\
+ Cowrie & Telnet & Python &  TwistedConch & May18 \\
+ Dionaea& HTTP   & Python &  custom       & Sep16 \\
+ Glastof& HTTP   & Python &  BaseHTTPServer& Oct16 \\
+ Conpot & HTTP   & Python &  BaseHTTPServer& Mar18 \\ [1ex] 
+ \hline
+\end{tabular}
+\caption{Library references in honeypots}
+\label{library}
+\end{table}
+
 \subsubsection{Default Configuration Check}
 Applications are setup with setup scripts or by using install media. Often, these media do not prompt the user to change the default settings or configuration prior to final installation. This leaves the system running with a default configuration. For example, we have Apache Tomcat Manager instance running on a default installation of Apache Tomcat. The manager provides an interface to manage the web service and the deployments. It is important to configure the tomcat manager or disable if not used. Similarly, there are devices and applications running with default configurations on the internet. With these default configurations, it is easily possible to  fingerprint the target system. Honeypots like Kippo, Cowrie, Glastopf and Conpot are usually deployed with default configurations. Morishita et al. \cite{morishita} provide an approach to self revealing honeypots on the internet by detection through default configurations.  This leads to easy discovery of honeypots by constructing a probe to check the default configuration. If the response matches the defaults, the end systems is likely a honeypot. 
 \newline
@@ -215,25 +237,7 @@ Network Sniffing is a reconnaissance method used for analysing the network traff
 Multi-stage attacks can be defined as a sequential array of exploits by an attacker targeting multiple vulnerable services on a system. Multi-stage attacks leverage the vulnerable service on the system to exploit the other services on the same system by gaining more control over the system. These kind of attacks are key to detection as they help in inferring a relationship between multiple services running on the system that constitute an environment. Vasilomanolakis et al. \cite{vasilomanolakis} proposed a honeypot capable of identifying multi-stage attacks. The honeypot is capable of simulating environments by running related services. The honeypot effectively captures advanced persistent threats. However, the information about services running on a system can also infer that the system is not real. For example, in the case of Industrial Control Systems, the communication protocols are active on specific devices and not on a single device. Honeypots like Conpot that are based on ICS show that the services are running on the target machine. Hence, it can be easily inferred that the target system is a honeypot. 
 \newline
 
-\begin{table*}[ht!]
- \begin{tabular}{|l|l|l|l|l|} 
- \hline
- Honeypot & Protocol & Language & Library & Updated \\ [0.3ex] 
- \hline
- Kippo  & SSH    & Python &  TwistedConch & May 2015 \\ 
- Cowrie & SSH    & Python &  TwistedConch & May 2018 \\
- TPwD   & Telnet & C      &  custom       & Feb 2016 \\
- MTPoT  & Telnet & Python &  telnetsrv    & Mar 2017 \\
- TIoT   & Telnet & Python &  custom       & May 2017 \\
- Cowrie & Telnet & Python &  TwistedConch & May 2018 \\
- Dionaea& HTTP   & Python &  custom       & Sep 2016 \\
- Glastof& HTTP   & Python &  BaseHTTPServer& Oct 2016 \\
- Conpot & HTTP   & Python &  BaseHTTPServer& Mar 2018 \\ [1ex] 
- \hline
-\end{tabular}
- \caption{Library references in honeypots}
-\label{table:2}
-\end{table*}
+
 
 \subsubsection{Risks in Probe Based Fingerprinting}
 However, there are risks involved in probe based fingerprinting methods. As these methods involve direct interaction with the target system, eventually the probe system is blacklisted. We must remember that there is no real reason for establishing a connection with a honeypot. Any connections observed with a honeypot is considered potentially an attack. Probing systems may get blocked by this approach. This limits in further exploitation or identification of the attacker or the honeypot. It is important to keep the attacker engaged with the honeypot to collect as much possible to identify the attacker. 
@@ -265,7 +269,45 @@ Maximal interaction techniques employ probe based techniques to interact with th
 
  \section{Evaluation of Honeypots based on Classification}
  
+\subsection{Evaluation of low effort fingerprinting techniques}
  
+ 
+ \begin{tabular}{ |p{1.5cm}||p{1.2cm}|p{0.4cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
+ \hline
+ \multicolumn{6}{|c|}{Metadata based Honeypot Fingerprinting Techniques} \\
+ \hline
+ Honeypots & Geo-Location & ISP & Hosting Provider & Search Engine & Shodan Search\\
+ \hline
+ Kippo   & *  &* & * & * & * \\
+ Cowrie  & *  &* & * & * & * \\
+ Glastopf& *  &* & * & * & * \\
+ Dionaea & *  &* & * & * & * \\
+ Conpot  & *  &* & * & * & * \\
+ HostaGe & *  &* & * & * & * \\
+ \hline
+\end{tabular}
+
+
+
+
+\subsection{Evaluation of high effort  Honeypot Fingerprinting Techniques}
+
+
+
+\begin{tabular}{ |p{1.5cm}||p{1.2cm}|p{0.4cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
+ \hline
+ \multicolumn{6}{|c|}{Probe based based Honeypot Fingerprinting Techniques} \\
+ \hline
+ Honeypots & Geo-Location & ISP & Hosting Provider & Search Engine & Shodan Search\\
+ \hline
+ Kippo   & *  &* & * & * & * \\
+ Cowrie  & *  &* & * & * & * \\
+ Glastopf& *  &* & * & * & * \\
+ Dionaea & *  &* & * & * & * \\
+ Conpot  & *  &* & * & * & * \\
+ HostaGe & *  &* & * & * & * \\
+ \hline
+\end{tabular}
  
  \section {Countermeasures}
  
