@@ -1,8 +1,10 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
+
+We evaluate popular open source honeypots with the proposed classification. We try to fingerprint the honeypots by harnessing the methods. The honeypots under evaluation are from the Honeynet project. The evaluation involves setting up of all the honeypots on a public internet facing system. Each honeypot is targeted with both low and high effort techniques. 
  
-\subsection{Evaluation of low effort fingerprinting techniques}
- 
+\subsection{Low-effort Honeypot Fingerprinting Techniques}
+ We subject the honeypots to low-effort fingerprinting method. The data retrieved is then used to infer the existence of a honeypot. The evaluation process for the low-effort fingerprinting techniques begin with two approaches. The first approach involves searching Shodan and Censys for the IP address of the target system. The second approach involves searching for vulnerable services exposed to the internet through Shodan and determining if the target system is a honeypot. The following tables below show if the honeypots are susceptible to these methods. 
  
  \begin{tabular}{ |p{1.5cm}||p{1.2cm}|p{0.4cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
  \hline
@@ -15,14 +17,14 @@
  Glastopf& *  &* & * & * & * \\
  Dionaea & *  &* & * & * & * \\
  Conpot  & *  &* & * & * & * \\
- HostaGe & *  &* & * & * & * \\
+ HostaGe & *  &* & * &   &   \\
  \hline
 \end{tabular}
 
 
 
 
-\subsection{Evaluation of high effort  Honeypot Fingerprinting Techniques}
+\subsection{High-effort Honeypot Fingerprinting Techniques}
 
 
 
