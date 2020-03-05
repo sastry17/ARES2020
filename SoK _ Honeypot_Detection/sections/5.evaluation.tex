@@ -7,28 +7,34 @@ We evaluate popular open source honeypots with the proposed classification. We t
  We subject the honeypots to low-effort fingerprinting method. The data retrieved is then used to infer the existence of a honeypot. We propose three approaches for the evaluation of low-effort fingerprinting techniques. The first approach involves searching Shodan and Censys for the IP address of the target system. The second approach involves searching for vulnerable services exposed to the internet through Shodan and determining if the target system is a honeypot. The last approach involves using keyword search in the search engines(Shodan and Censys). We use the metadata obtained from the search results to fingerprint the honeypots. 
  
  \subsubsection{IP address Search}
-The IP address of the suspected target system is used as a search parameter to determine the open ports, services, geo-location, hostname and the hosting provider. By correlating the data obtained from the search results it is possible to infer the presence of a honeypot. For example, if the IP address does not resolve to a domain name, has the port 500 open and is hosted on a cloud, it is very likely that the system is a honeypot. This is because port 500 is used for the MODBUS protocol for network communication in Industrial Control Systems. It is very unlikely to have ICS systems hosted on the cloud as they are physical systems that are deployed in industrial environments.  
+The IP address of the suspected target system is used as a search parameter to determine the open ports, services, geo-location, hostname and the hosting provider. By correlating the data obtained from the search results it is possible to infer the presence of a honeypot. For example, if the IP address does not resolve to a domain name with, the port 500 open and is hosted on a cloud, it is very likely that the system is a honeypot. This is because port 500 is used for the MODBUS protocol for network communication in Industrial Control Systems. It is very unlikely to have ICS systems hosted on the cloud as they are physical systems that are deployed in industrial environments.  Further derivations can be made based on location of the system. If the system is located to be not in an enterprise, but to a common household or an education research facility, we can infer that the target system is a honeypot. We  evaluate the popular honeypots with the IP based low effort fingerprinting and present the results in Table \ref{Tab:IP address}
 
  \subsubsection{Vulnerable services Search}
+ Vulnerable services can be retrieved by providing the name of a service as a search parameter in Shodan or Censys. The results listed can then be examined for IP address, location, hosting provider, encryption algorithms and content. For example, providing SSH as a search parameter, we obtain many search results. SSH is a preferred protocol for communicating with cloud instances and remote systems. Based on the header information, list of encryption algorithms, protocol version and comparing the data with response from an actual honeypot, it is possible to infer that the system is a honeypot. Majority of the open source honeypot implementations depend on poorly maintained libraries. These libraries emulate static responses for handshake and session creation. By comparing the response data from the honeypots and verifying the similarities it can be confirmed that the system is a honeypot. 
  
  \subsubsection{Keyword based Search}
+Keyword based search involves searching the Shodan and Censys database for specific content with respect to honeypots. This content must be specific with the implementation of honeypots. The keywords may also just include the name of the honeypots as the search parameter. Often, honeypots are deployed with their default configuration and content. This static content can be used as a search parameter. For example, Conpot a ICS honeypot has the default static web content with the keyword "Technodrome" on it. Shodan and Censys search determined many results based on this keyword. Glastopf, an open source HTTP honeypot has "<h2>My Resource</h2>" as header content on its web page. Using this as a search parameter exposed around 102 honeypots online. We find similar keywords that exposed many poopular open source honeypots. We list the honeypots that could be identified in Table \ref{Tab:IP address}
+
+ \begin{table}[]
+    
  
- \begin{tabular}{ |p{1.5cm}||p{1.2cm}|p{0.4cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
+ \begin{tabular}{ |p{1.5cm}||p{1.5cm}||p{1.2cm}|p{0.4cm}| }
  \hline
- \multicolumn{6}{|c|}{Metadata based Honeypot Fingerprinting Techniques} \\
+ \multicolumn{4}{|c|}{IP address based Low-effort Honeypot Fingerprinting Techniques} \\
  \hline
- Honeypots & Geo-Location & ISP & Hosting Provider & Search Engine & Shodan Search\\
+ Honeypots & IP Address Search & Vulnerable Services Search & Keyword Search \\
  \hline
- Kippo   & *  &* & * & * & * \\
- Cowrie  & *  &* & * & * & * \\
- Glastopf& *  &* & * & * & * \\
- Dionaea & *  &* & * & * & * \\
- Conpot  & *  &* & * & * & * \\
- HostaGe & *  &* & * &   &   \\
+ Kippo   & *  &* & *  \\
+ Cowrie  & *  &* & *  \\
+ Glastopf& *  &* & *  \\
+ Dionaea & *  &* & *  \\
+ Conpot  & *  &* & *  \\
+ HostaGe & *  &*  &  *  \\
  \hline
 \end{tabular}
-
-
+ \caption{Evaluation of Honeypots based on IP address Low-Effort Fingerprinting Methods}
+ \label{Tab:IP address}
+ \end{table}
 
 
 \subsection{High-effort Honeypot Fingerprinting Techniques}
