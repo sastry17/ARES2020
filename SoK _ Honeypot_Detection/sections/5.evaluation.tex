@@ -16,11 +16,9 @@ The IP address of the suspected target system is used as a search parameter to d
 Keyword based search involves searching the Shodan and Censys database for specific content with respect to honeypots. This content must be specific with the implementation of honeypots. The keywords may also just include the name of the honeypots as the search parameter. Often, honeypots are deployed with their default configuration and content. This static content can be used as a search parameter. For example, Conpot a ICS honeypot has the default static web content with the keyword "Technodrome" on it. Shodan and Censys search determined many results based on this keyword. Glastopf, an open source HTTP honeypot has "<h2>My Resource</h2>" as header content on its web page. Using this as a search parameter exposed around 102 honeypots online. We find similar keywords that exposed many poopular open source honeypots. We list the honeypots that could be identified in Table \ref{Tab:IP address}
 
  \begin{table}[]
-    
- 
- \begin{tabular}{ |p{1.5cm}||p{1.5cm}||p{1.2cm}|p{0.4cm}| }
+ \begin{tabular}{ |p{1.5cm}||p{1.5cm}||p{1.2cm}|p{1.4cm}| }
  \hline
- \multicolumn{4}{|c|}{IP address based Low-effort Honeypot Fingerprinting Techniques} \\
+ \multicolumn{4}{|c|}{Low-effort Honeypot Fingerprinting Techniques} \\
  \hline
  Honeypots & IP Address Search & Vulnerable Services Search & Keyword Search \\
  \hline
@@ -38,21 +36,36 @@ Keyword based search involves searching the Shodan and Censys database for speci
 
 
 \subsection{High-effort Honeypot Fingerprinting Techniques}
+High-effort Honeypot fingerprinting techniques involve direct interaction with the target systems. The methods all probe based techniques. They are classified as high effort as multiple probe based techniques are used to obtain specific data about the target system by directly interacting with it. They provide higher detection accuracy than the low effort because of specific information obtained from the probes. Definite models can be constructed based on the probes and the data received from these methods. Further, these models can be used to develop machine learning based systems based on the data received from the initial probes. We evaluate honeypots based on the probe based fingerprinting methods for their detection using Banner based probing, deep packet inspection and command execution.
+
+\subsubsection{Banner based Probing}
+Banner based probing involves starting a communication channel with the target system and checking the banner response advertised from the service for anomalies. The deviation in default banners provided by standard services gives information about the system. On looking up the banner response and comparing it with the standard banners, it can be inferred that the target system is a honeypot. Normally, honeypot administrators forget to change the banner response parameters based on the operating system the service is running. If there is a mismatch on the information from the banner to that of the underlying system, it is evident that the system is a honeypot. Both Shodan and Censys provide banners for systems open to the internet. However, this information cannot be found if detecting honeypots on a local network. Popular services that advertise banners include FTP, SSH, HTTP, MODBUS, VNC and HTTPS. 
+
+
+\subsubsection{Command Execution}
+Honeypots emulate the services of a real system. These emulations do not emulate all the functionality of a service. Low-interaction honeypots are designed to provide an emulation similar to the real system that only encourages an attacker to establish a connection. Further probing of the system with specific commands based on the operating system and the network protocol result in unexpected responses that infer that the system is a honeypot. Command execution provides the highest detection accuracy for fingerprinting honeypots. A series of commands can be executed in the target system and checking the response helps in characterizing the system as a honeypot. 
 
 
 
-\begin{tabular}{ |p{1.5cm}||p{1.2cm}|p{0.4cm}|p{1.2cm}|p{1.2cm}|p{1.2cm}| }
+\subsubsection{Deep Packet Inspection}
+Deep packet inspection(DPI) provides comprehensive information about the protocol implementation in the system. It involves capturing the network communication between the attacker and the honeypot and inspecting the packet dump obtained for anomalies in the responses. DPI is a very effective fingerprinting technique that can classify the end system based on transport layer protocol responses, response times, operating systems and the packet payload. We use the above probe based methods in cnjunction with the other methods specified in sub section \ref{Probe Based} 
+
+
+
+
+
+\begin{tabular}{ |p{1.5cm}||p{1.5cm}|p{1.5cm}|p{1cm}| }
  \hline
- \multicolumn{6}{|c|}{Probe based based Honeypot Fingerprinting Techniques} \\
+ \multicolumn{4}{|c|}{High-Effort Honeypot Fingerprinting Techniques} \\
  \hline
- Honeypots & Geo-Location & ISP & Hosting Provider & Search Engine & Shodan Search\\
+ Honeypots & Banner Grabbing & Command Execution & DPI \\
  \hline
- Kippo   & *  &* & * & * & * \\
- Cowrie  & *  &* & * & * & * \\
- Glastopf& *  &* & * & * & * \\
- Dionaea & *  &* & * & * & * \\
- Conpot  & *  &* & * & * & * \\
- HostaGe & *  &* & * & * & * \\
+ Kippo   & *  &* & * \\
+ Cowrie  & *  &* & * \\
+ Glastopf& *  &* & *  \\
+ Dionaea & *  &* & * \\
+ Conpot  & *  &* & * \\
+ HostaGe & *  &* & * \\
  \hline
 \end{tabular}
 \end{document}
