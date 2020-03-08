@@ -1,4 +1,17 @@
 \documentclass[../main.tex]{subfiles}
 \begin{document}
+Honeypots simulate system services and protocols. We emphasize that honeypots can be detected gradually on continuous interaction and response analysis. Limited simulation, default configuration, use of poor dependencies and bad deployment scenarios lead to quick determination of honeypots. We suggest countermeasures based on our proposed detection taxonomy. 
+
+\subsubsection{Countermeasures - Meta data based methods}
+Meta based methods rely on data that is obtained without interaction from the target system. They mainly rely on IP address as the basic parameter to obtain meta data. We recommend to change IP addresses or employ content distribution networks to geographically deploy honeypots where they seem to be applicable.  It is recommended to change the IP address of a honeypot on detection of a positive attack vector. This method is also effective against vulnerability search engines like Shodan and Censys. These search engines perform internet wide scans on a daily basis. Hence they are in effective against a system if its changing its IP address. It is also recommended to not use cloud hosting providers for honeypots based on ICS protocols. Also, cloud providers like AWS, Azure and GCP enforce strict access control and communication protocols for interaction with remote systems. 
+
+
+\subsubsection{Countermeasures - Probe based methods}
+
+\subsubsection{Countermeasures - Dependency based methods}
+
+\subsubsection{Countermeasures - Machine Learning methods}
+\newline
+Apart from the suggested countermeasures, it is strongly recommended that administrators schedule periodic maintenance and leverage the data obtained from honeypots. We assert that honeypots are basically systems with resources that can be used for adversarial purposes if not carefully monitored. Stale systems exposed to internet are as huge risk than any other advanced threats. 
 
 \end{document}
