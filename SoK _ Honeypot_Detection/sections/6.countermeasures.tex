@@ -7,11 +7,14 @@ Meta based methods rely on data that is obtained without interaction from the ta
 
 
 \subsubsection{Countermeasures - Probe based methods}
+Probe based methods are very effective methods for honeypot fingerprinting. We suggest that the honeypots are made self aware and dynamic each time an attack has been detected. The detection methods can be less effective if the honeypots employed a random profile to choose selective services for a time period.  Logging of attacks is a costly operation for the systems that reflect on the response time. We suggest the maximum use of the system event viewer for the logging activity. This reduces the additional overhead of logging and the there is less impact on the system response time. The countermeasures suggested for meta data based methods also hold for the probe based methods. 
 
 \subsubsection{Countermeasures - Dependency based methods}
+Honeypots rely on protocol libraries for achieving worthy simulations. It is important to refer libraries that are regularly maintained. Further, we suggest to make additional tweaks to the references by changing the default static responses by comparing the responses to an actual system. Default configurations must be avoided and dynamic configuration based on the attack and the environment is recommended. 
 
 \subsubsection{Countermeasures - Machine Learning methods}
+Machine learning models rely on a substantiate and ordered data sets for making accurate derivations. However, the drawback of machine learning models is concerned with the freshness of the training data set that was leveraged to model the system. Honeypots must employ and fix the existing ambiguities in the responses by detecting multi stage attacks dynamically. This provides the learning algorithms with data that deviates from the learning data set and lesser detection accuracy.
 \newline
-Apart from the suggested countermeasures, it is strongly recommended that administrators schedule periodic maintenance and leverage the data obtained from honeypots. We assert that honeypots are basically systems with resources that can be used for adversarial purposes if not carefully monitored. Stale systems exposed to internet are as huge risk than any other advanced threats. 
+Apart from the above suggested countermeasures, it is strongly recommended that administrators schedule periodic maintenance and leverage the data obtained from honeypots. We assert that honeypots are basically systems with resources that can be used for adversarial purposes if not carefully monitored. Stale systems exposed to internet are as huge risk than any other advanced threats. 
 
 \end{document}
