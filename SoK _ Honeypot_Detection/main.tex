@@ -21,9 +21,11 @@
 \pgfplotsset{width=8cm,compat=1.9}
 \usepackage{caption}
 \usepackage{graphicx}
+\usepackage[textwidth=30]{todonotes}
 \usepackage{ragged2e}
 \usepackage{subfiles}
 \graphicspath{ {./Figures/} }
+
 
 % The following packages can be found on http:\\www.ctan.org
 %\usepackage{graphics} % for pdf, bitmapped graphics files
@@ -32,6 +34,13 @@
 %\usepackage{mathptmx} % assumes new font selection scheme installed
 %\usepackage{amsmath} % assumes amsmath package installed
 %\usepackage{amssymb}  % assumes amsmath package installed
+
+\newcommand{\evc}[1]{
+\todo[fancyline,color=red!40,size=\scriptsize]{\textbf{ev:} #1
+\color{black}}}
+\newcommand{\evi}[1]{ \todo[inline,color=red!40]{\textbf{ev:} #1
+\color{black}}}
+
 
 \title{\LARGE \bf
 SoK: Classifying Honeypot Fingerprinting Techniques
@@ -55,29 +64,23 @@ In defensive security, Honeypots play an important role to detect attacks by sim
 \end{abstract}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{INTRODUCTION}
-\subfile{sections/1.introduction}
+%\section{INTRODUCTION}
+\input{sections/1.introduction}
 
-\section{Background}
-\subfile{sections/2.background}
+%\section{Background}
+\input{sections/2.background}
 
-\section{Honeypot Fingerprinting Techniques}
-\subfile{sections/3.HFT}
+\input{sections/3.HFT}
 
-\section{Classifying Honeypot Fingerprinting Methods}
-\subfile{sections/4.CHFM}   
+\input{sections/4.CHFM}   
 
-\section{Evaluation of Honeypots based on Classification}
-\subfile{sections/5.evaluation} 
+\input{sections/5.evaluation} 
  
-\section {Countermeasures}
-\subfile{sections/6.countermeasures}
+\input{sections/6.countermeasures}
  
-\section {Related Work}
-\subfile{sections/7.relatedwork} 
+\input{sections/7.relatedwork} 
  
-\section{CONCLUSIONS}
-\subfile{sections/8.conclusions}
+\input{sections/8.conclusions}
 
 \addtolength{\textheight}{-12cm}   % This command serves to balance the column lengths
                                   % on the last page of the document manually. It shortens

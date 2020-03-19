@@ -1,6 +1,6 @@
-\documentclass[../main.tex]{subfiles}
+\section{Classifying Honeypot Fingerprinting Methods}
+\label{sec:chfm}
 
-\begin{document}
 Traditionally, fingerprinting methods are classified into active and passive based on interaction with the target system \cite{spitzner}. Active fingerprinting involves the creation of specific probes and using them to query the target system to collect as much data possible. On the contrary, passive fingerprinting makes use of available metadata to determine information about the target. Passive fingerprinting limits communication with the target system as much as possible. Remote attackers tend to use active fingerprinting methods more because passive approaches do not lead to an inference. Passive fingerprinting techniques depend on fingerprint databases to infer their findings. Fingerprint databases contain information about distinct responses by systems on interaction.
    
 We classify the detection methods discussed in sections before into high and low effort fingerprinting methods. The classification is based on the communication levels required by the methods to obtain qualified information to fingerprint the target system. Honeypot networks block communication with the attackers after a connection attempt is detected. This limits the detection and further exploitation of the honeypot from a probe network. Also, we believe that low-effort methods are effective with honeypots fingerprinting, to limit logging information of the attacker and to avoid being blocked. 
@@ -11,4 +11,3 @@ We classify the detection methods discussed in sections before into high and low
  
  \subsection{High-Effort Fingerprinting Techniques}
 High-Effort Fingerprinting Techniques employ probe-based techniques to interact with the target system to obtain specific operational information from the target system. They leave a massive footprint on the target machine during the probing process. This footprint enables honeypot administrators to trace the attackers or blacklist the IP addresses of attack sources. Though maximal interaction techniques provide better data for detection accuracy, they are risky. Internet-wide scan result providers like Shodan and Censys use high-effort fingerprinting techniques to scan the internet for open ports and vulnerable services. Information from these search engines are used as reconnaissance for exploits. We emphasize that all honeypots are prone to detection over a period of interaction. Accurate fingerprinting data can be obtained by a detailed intelligent scan from probes. High-effort fingerprinting methods have detection accuracy as an advantage but are highly susceptible to backtracking. 
-\end{document}

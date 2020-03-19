@@ -1,6 +1,6 @@
-\documentclass[../main.tex]{subfiles}
+\section{Background}
+\label{sec:back}
 
-\begin{document}
 Honeypots are one of the strategies employed in defensive security to detect attacks from adversaries. They are designed and developed to mimic the real protocols and provide information about the attack to the administrators. Based on the interaction and service emulation, honeypots are classified into low, medium and high interaction honeypots. Security administrators often feel that low interaction honeypots are feasible to be deployed in their environment as they are not resourced intensively and are less risky. Low interaction honeypots are limited in protocol emulations and hence are also easy targets for fingerprinting attacks. 
 
 Fingerprinting techniques are used to identify systems by analysis of the behavioral information retrieved by probing. It is normally the first step employed by attackers to gain more insight into the end system before exploiting them. This technique has proved to be effective and there are various fingerprinting tools available that can accurately determine the operating system, kernel versions, protocol versions, device name and other attributes of the end system. However, determining these attribute information may involve multiple scans and intermittent probing. The ideal outcome of device fingerprinting infers the device and its attributes, based on which the attacker can orchestrate exploits. The primary focus of a honeypot lies in its ability to stay undetected. Attackers use fingerprinting as an initial setup to determine the validity of the end device before investing their resources on exploitation. If the identity of honeypot is revealed during the initial fingerprinting techniques, their productivity is degraded. This happens due to two reasons. Firstly, the attacker decides to broadcast his findings about the existence of the honeypot which alerts other attackers when they are looking for targets. Second, there is a derived fingerprinting technique for the target honeypot, which can be included in the primary scan of popular fingerprinting tools. p0f, Nmap, Uniscan, Metasploit, Nikto, and cisco-torch are some of the open-source fingerprinting tools which are capable of detecting honeypots like Kippo, Cowrie, and Glastopf. Table \ref{tab:Table1} provides a list of protocols and the honeypots available on the internet. 
@@ -64,4 +64,3 @@ Identifying deviations in the behavior of a system and inferring fingerprints ha
 \end{tabular}
 
 \end{table*}
-\end{document}

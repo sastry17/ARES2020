@@ -1,10 +1,8 @@
-\documentclass[../main.tex]{subfiles}
+\section{Honeypot Fingerprinting Techniques}
+\label{sec:hft}
 
-\begin{document}
 Based on previous work, we now present various fingerprinting techniques for honeypots. The techniques are inferred from related work in the area of fingerprinting and contributions from researchers. Based on their type, we list four methods of fingerprinting of honeypots. Figure \ref{fig:taxonomy} summarizes the honeypot fingerprinting techniques.
 The fingerprinting methods are explained in detail in further sub-sections. 
-
-
 
 \subsection{Meta-Data based fingerprinting}
 Metadata based fingerprinting leverages the basic known information about the honeypot. This method does not necessarily need any interaction with the honeypot to determine any information. The technique utilizes basic information like the IP address or the domain name to infer the probability of honeypot existence. With IP address information, it is possible to determine other metadata about the system like the geo-location, internet service provider, autonomous system, hosting or cloud provider. This metadata can be further analyzed to determine the probabilities of a honeypot. For example, if the target system has the TCP port 500 open and is geo-located to be in a University, it can be possible that the target system is a honeypot. Another example would be if the same system is found to be hosted by a cloud provider like AWS, the system is likely a honeypot because Industrial Control Systems are physical devices that cannot be hosted or deployed on a cloud network.
@@ -17,6 +15,7 @@ Internet-wide scanning tools like Shodan provide honeypot detection services. Th
     \label{fig:taxonomy}
 \end{figure}
 
+\evc{figure needs polishing}
 
 Based on the information received from meta-data methods, it is possible to infer the existence of a honeypot with minimal interaction. We formulate the process of fingerprinting with the metadata approach based on the data received through the process. Figure 1 shows the formal approach to fingerprint honeypots with the metadata-based method. The parameters like geolocation provide information about the location of the honeypot. This information can be used to find relevance to the services rendered by the honeypot. For example, if the location is identified as an educational institution, the system is likely a honeypot deployed for experimental purposes. Similar inferences can be made with the data received from other parameters like ISP and hosting information. In the following subsections, we provide further information about the information that can be derived using metadata. 
 \newline
@@ -102,4 +101,3 @@ Honeypots simulate network protocols. The simulations are implemented using pre-
 Machine learning techniques are based on the response data received from probe-based methods. The collection of response data acts as a learning dataset for designing a model for the detection of honeypots. The machine learning models depend on data and modeling algorithms to learn the process of fingerprinting based on previous inference in the data set. Huang et al. \cite{huang} provide a machine learn based model approach to detect honeypots. The approach introduces features from the network layer, application layer, and the operating system layer and proposes a detection model to identify honeypots with a stated detection rate of 0.03 AUC. Feng et al. \cite{Feng2016} also propose a learning model based on the probe-based method for detecting ICS honeypots. The proposed method initially uses reconnaissance to identify systems open to the internet with specific ports open which are related to ICS. Next, they construct probes to collect data for specific banners and handshakes. This information is used to design a learning model to classify real systems and honeypots of ICS devices.
 
 Machine Learning-based fingerprinting is suitable when there is enough data, algorithm and an applicable learning model. With good learning models and data, it is possible to increase the detection accuracy. This technique is suitable to be applied after successful fingerprinting methods are established for a honeypot through metadata and probe-based fingerprinting techniques. The main drawback of this approach is the freshness of the data. The data on which the models are based need to be constantly changed and tested to ensure that the detection accuracy is still maintained.  
-\end{document}
