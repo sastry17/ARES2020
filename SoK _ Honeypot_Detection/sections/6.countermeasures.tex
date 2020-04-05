@@ -4,7 +4,7 @@
 Honeypots simulate system services and protocols. We emphasize that honeypots can be detected gradually on continuous interaction and response analysis. Limited simulation, default configuration, use of poor dependencies and bad deployment scenarios lead to quick determination of honeypots. We suggest countermeasures based on our proposed detection taxonomy. 
 
 \subsubsection{Countermeasures - Metadata based methods}
-Meta based methods rely on data that is obtained without interaction from the target system. They mainly rely on IP addresses as the basic parameter to obtain metadata. We recommend to change IP addresses or employ content distribution networks to geographically deploy honeypots where they seem to be applicable.  It is recommended to change the IP address of a honeypot on the detection of a positive attack vector. This method is also effective against vulnerability search engines like Shodan and Censys. These search engines perform Internet-wide scans daily. Hence they are ineffective against a system if it is changing its IP address. It is also recommended to not use cloud hosting providers for honeypots based on \acrshort{ics} protocols. Also, cloud providers like \acrshort{aws}, Azure, and GCP enforce strict access control and communication protocols for interaction with remote systems. 
+Meta based methods rely on data that is obtained without interaction from the target system. They mainly rely on IP addresses as the basic parameter to obtain metadata. We recommend to change IP addresses or employ content distribution networks to geographically deploy honeypots where they seem to be applicable.  It is recommended to change the IP address of a honeypot on the detection of a positive attack vector. This method is also effective against vulnerability search engines like Shodan and Censys. These search engines perform Internet-wide scans daily. Hence they are ineffective against a system if it is changing its IP address. It is also recommended to not use cloud hosting providers for honeypots based on \acrshort{ics} protocols. Also, cloud providers like \acrshort{aws}, Azure, and \acrshort{gcp} enforce strict access control and communication protocols for interaction with remote systems. 
 
 
 \subsubsection{Countermeasures - Probe-based methods}
@@ -15,6 +15,6 @@ Honeypots rely on protocol libraries for achieving worthy simulations. It is imp
 
 \subsubsection{Countermeasures - Machine Learning methods}
 Machine learning models rely on a substantiate and ordered data sets for making accurate derivations. However, the drawback of machine learning models is concerned with the freshness of the training data set that was leveraged to model the system. Honeypots must employ and fix the existing ambiguities in the responses by detecting multi-stage attacks dynamically. This provides the learning algorithms with data that deviates from the learning data set and lesser detection accuracy.
-\newline
+
 Apart from the above-suggested countermeasures, it is strongly recommended that administrators schedule periodic maintenance and leverage the data obtained from honeypots. We assert that honeypots are systems with resources that can be used for adversarial purposes if not carefully monitored. Stale systems exposed to the Internet are as huge risk than any other advanced threats. 
 
