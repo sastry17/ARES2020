@@ -3,8 +3,8 @@
 
 We evaluate popular open-source honeypots with the proposed classification. We try to fingerprint the honeypots by harnessing the methods. The honeypots under evaluation are from the Honeynet Project. The evaluation involves setting up of all the honeypots on a public Internet facing system. Each honeypot is targeted with both low and high effort techniques. 
  
-\subsection{Low-effort Honeypot Fingerprinting Techniques}
- We subject the honeypots to the low-effort fingerprinting method. The data retrieved is then used to infer the existence of a honeypot. We propose three approaches for the evaluation of low-effort fingerprinting techniques. The first approach involves searching Shodan and Censys for the IP address of the target system. The second approach involves searching for vulnerable services exposed to the Internet through Shodan and determining if the target system is a honeypot. The last approach involves using keyword searches in search engines(Shodan and Censys). We use the metadata obtained from the search results to fingerprint the honeypots. 
+\subsection{\acrfull{lef} Techniques}
+ We subject the honeypots to the \acrshort{lef} method. The data retrieved is then used to infer the existence of a honeypot. We propose three approaches for the evaluation of \acrshort{lef}. The first approach involves searching Shodan and Censys for the IP address of the target system. The second approach involves searching for vulnerable services exposed to the Internet through Shodan and determining if the target system is a honeypot. The last approach involves using keyword searches in search engines(Shodan and Censys). We use the metadata obtained from the search results to fingerprint the honeypots. 
  
  \subsubsection{IP address Search}
 The IP address of the suspected target system is used as a search parameter to determine the open ports, services, geo-location, hostname, and the hosting provider. By correlating the data obtained from the search results it is possible to infer the presence of a honeypot. For example, if the IP address does not resolve to a domain name with, the port 500 open and is hosted on a cloud, the system is likely a honeypot. This is because port 500 is used for the MODBUS protocol for network communication in Industrial Control Systems. It is very unlikely to have \acrshort{ics} systems hosted on the cloud as they are physical systems that are deployed in industrial environments.  Further derivations can be made based on the location of the system. If the system is located to be not in an enterprise, but to a common household or an education research facility, we can infer that the target system is a honeypot. We  evaluate the popular honeypots with the IP based low effort fingerprinting and present the results in Table \ref{Tab:IP address}
@@ -18,7 +18,7 @@ The keyword-based search involves searching the Shodan and Censys database for s
  \begin{table}[]
  \begin{tabular}{ |p{1.5cm}||p{1.5cm}||p{1.2cm}|p{1.4cm}| }
  \hline
- \multicolumn{4}{|c|}{Low-effort Honeypot Fingerprinting Techniques} \\
+ \multicolumn{4}{|c|}{\acrfull{lef} Techniques} \\
  \hline
  Honeypots & IP Address Search & Vulnerable Services Search & Keyword Search \\
  \hline
@@ -30,13 +30,13 @@ The keyword-based search involves searching the Shodan and Censys database for s
  HostaGe & *  &*  &  *  \\
  \hline
 \end{tabular}
- \caption{Evaluation of Honeypots based on IP address Low-Effort Fingerprinting Methods}
+ \caption{Evaluation of Honeypots based on IP address \acrfull{lef} Methods}
  \label{Tab:IP address}
  \end{table}
 
 
-\subsection{High-effort Honeypot Fingerprinting Techniques}
-High-effort Honeypot fingerprinting techniques involve direct interaction with the target systems. The methods all probe-based techniques. They are classified as high effort as multiple probe-based techniques are used to obtain specific data about the target system by directly interacting with it. They provide higher detection accuracy than the low effort because of specific information obtained from the probes. Definite models can be constructed based on the probes and the data received from these methods. Further, these models can be used to develop machine learning-based systems based on the data received from the initial probes. We evaluate honeypots based on the probe-based fingerprinting methods for their detection using Banner based probing, deep packet inspection, and command execution.
+\subsection{\acrfull{hef} Techniques}
+High-effort Honeypot fingerprinting techniques involve direct interaction with the target systems. The methods used all probe-based techniques described in Section \ref{sec:hft}. They are classified as high effort as multiple probe-based techniques are used to obtain specific data about the target system by directly interacting with it. They provide higher detection accuracy than the low effort because of specific information obtained from the probes. Definite models can be constructed based on the probes and the data received from these methods. Further, these models can be used to develop machine learning-based systems based on the data received from the initial probes. We evaluate honeypots based on the probe-based fingerprinting methods for their detection using Banner based probing, deep packet inspection, and command execution. Table \ref{Tab:hef} shows honeypots that can be detected with \acrshort{hef} methods. We describe the evaluation process with Banner based, command execution and deep packet inspection methods. 
 
 \subsubsection{Banner based Probing}
 Banner based probing involves starting a communication channel with the target system and checking the banner response advertised from the service for anomalies. The deviation in default banners provided by standard services gives information about the system. On looking up the banner response and comparing it with the standard banners, it can be inferred that the target system is a honeypot. Normally, honeypot administrators forget to change the banner response parameters based on the operating system the service is running. If there is a mismatch on the information from the banner to that of the underlying system, it is evident that the system is a honeypot. Both Shodan and Censys provide banners for systems open to the Internet. However, this information cannot be found if detecting honeypots on a local network. Popular services that advertise banners include FTP, SSH, HTTP, MODBUS, VNC, and HTTPS. 
@@ -47,18 +47,18 @@ Honeypots emulate the services of a real system. These emulations do not emulate
 
 
 
-\subsubsection{Deep Packet Inspection}
-Deep packet inspection(DPI) provides comprehensive information about the protocol implementation in the system. It involves capturing the network communication between the attacker and the honeypot and inspecting the packet dump obtained for anomalies in the responses. DPI is a very effective fingerprinting technique that can classify the end system based on transport layer protocol responses, response times, operating systems and packet payload. We use the above probe-based methods in conjunction with the other methods specified in subsection \ref{Probe Based}.
+\subsubsection{\acrfull{dpi}}
+\acrshort{dpi} provides comprehensive information about the protocol implementation in the system. It involves capturing the network communication between the attacker and the honeypot and inspecting the packet dump obtained for anomalies in the responses. \acrshort{dpi} is a very effective fingerprinting technique that can classify the end system based on transport layer protocol responses, response times, operating systems and packet payload. We use the above probe-based methods in conjunction with the other methods specified in subsection \ref{Probe Based}.
 
 
 
 
-
+\begin{table}[]
 \begin{tabular}{ |p{1.5cm}||p{1.5cm}|p{1.5cm}|p{1cm}| }
  \hline
- \multicolumn{4}{|c|}{High-Effort Honeypot Fingerprinting Techniques} \\
+ \multicolumn{4}{|c|}{\acrfull{hef}} Techniques \\
  \hline
- Honeypots & Banner Grabbing & Command Execution & DPI \\
+ Honeypots & Banner Grabbing & Command Execution & \acrshort{dpi} \\
  \hline
  Kippo   & *  &* & * \\
  Cowrie  & *  &* & * \\
@@ -67,4 +67,7 @@ Deep packet inspection(DPI) provides comprehensive information about the protoco
  Conpot  & *  &* & * \\
  HostaGe & *  &* & * \\
  \hline
-\end{tabular}
+ \end{tabular}
+\caption{Evaluation of Honeypots based on \acrshort{hef} Methods}
+ \label{Tab:hef}
+ \end{table}
