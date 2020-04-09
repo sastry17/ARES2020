@@ -1,3 +1,14 @@
 \section{Evaluation}
 \label{sec:eval}
 
+In this section, we evaluate the methods in the proposed taxonomy. The evaluation setup and evaluation process are described in the following sub sections. 
+
+\subsection{Evaluation Setup}
+We evaluate the Probe based and the Metadata based methods in our evaluation. For the probe based methods, we create probes for the techniques and scan the Internet. We use ZMap to create the probes and scan the Internet \cite{zmap}. We limit the \acrshort{ip} address range to Germany to reduce the Internet scanning overhead. The system used for evaluation has a Linux distribution and has a private \acrshort{ip} address allocated by University DHCP server.  The results of the scanning are are not shared publicly. The aim of this evaluation is to detect honeypots based on the proposed taxonomy. The Internet scan is performed for research purposes only. The metadata-based techniques require search keywords to retrieve information about the honeypots. The keywords list is determined using information from publications based on honeypot fingerprinting research \cite{Vetterl2018} \cite{counting}. Furthermore, we determine additional keywords by setting up popular honeypots listed in Table \ref{tab:protocols-honeypots} on our local environments and probing them for static content.
+
+\subsection{Evaluation - Probe-based Techniques}
+Probe-based techniques require creation of probes to retrieve specific information from the target system. The probes are constructed based on the techniques Probe-based methods depicted in Figure\ref{fig:taxonomy}. We evaluate the methods by developing a fingerprinting tool based on an \acrfull{fsm} model. The \acrshort{fsm} provides a formal approach to the probing process and the aggregation of data received for honeypot fingerprinting. The \acrshort{fsm} for the probe-based techniques is shown in Figurexxx. 
+
+
+\subsection{Evaluation - Metadata-based Techniques}
+Metadata-based techniques leverage the data that is collected without direct interaction with the honeypot. To evaluate the metadata-based techniques we use popular Internet scan search engines Shodan and Censys. Shodan and Censys perform daily Internet scans and store the results as a queryable database. We define a \acrshort{fsm} to implement a crawler that performs a search on Shodan and Censys and retrieves metadata required for honeypot fingerprinting. Figure xxx shows the \acrshort{fsm} for metadata-based techniques. The information retrieved from the search engines is complied to fingerprint honeypots. Essential information like geo-location, \acrshort{isp} and the static content are used for the fingerprinting process. 
