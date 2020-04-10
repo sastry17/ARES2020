@@ -11,4 +11,11 @@ Probe-based techniques require creation of probes to retrieve specific informati
 
 
 \subsection{Evaluation - Metadata-based Techniques}
-Metadata-based techniques leverage the data that is collected without direct interaction with the honeypot. To evaluate the metadata-based techniques we use popular Internet scan search engines Shodan and Censys. Shodan and Censys perform daily Internet scans and store the results as a queryable database. We define a \acrshort{fsm} to implement a crawler that performs a search on Shodan and Censys and retrieves metadata required for honeypot fingerprinting. Figure xxx shows the \acrshort{fsm} for metadata-based techniques. The information retrieved from the search engines is complied to fingerprint honeypots. Essential information like geo-location, \acrshort{isp} and the static content are used for the fingerprinting process. 
+Metadata-based techniques leverage the data that is collected without direct interaction with the honeypot. To evaluate the metadata-based techniques we use popular Internet scan search engines Shodan and Censys. Shodan and Censys perform daily Internet scans and store the results as a queryable database. We define a \acrshort{fsm} to implement a crawler that performs a search on Shodan and Censys and retrieves metadata required for honeypot fingerprinting. The crawling algorithm begins with a generic scan from Shodan and Censys that list vulnerable services exposed to the Internet. Figure \ref{fig:fsm_md} shows the \acrshort{fsm} for metadata-based techniques. The information retrieved from the search engines is complied to fingerprint honeypots. Essential information like geo-location, \acrshort{isp} and the static content are used for the fingerprinting process.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[scale=0.45]{Metadata_FSm}
+    \caption{\acrshort{fsm} for Metadata-based Fingerprinting }
+    \label{fig:fsm_md}
+\end{figure}
